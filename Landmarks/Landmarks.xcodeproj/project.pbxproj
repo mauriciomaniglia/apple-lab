@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A546FF22877BC8000B55CDE /* landmarkData.json in Resources */ = {isa = PBXBuildFile; fileRef = 6A546FF12877BC7F00B55CDE /* landmarkData.json */; };
+		6A546FF32877BC8000B55CDE /* landmarkData.json in Resources */ = {isa = PBXBuildFile; fileRef = 6A546FF12877BC7F00B55CDE /* landmarkData.json */; };
 		6AD18A9D287656C7005BAB9F /* LandmarksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD18A8D287656C0005BAB9F /* LandmarksApp.swift */; };
 		6AD18A9E287656C7005BAB9F /* LandmarksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD18A8D287656C0005BAB9F /* LandmarksApp.swift */; };
 		6AD18A9F287656C7005BAB9F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD18A8E287656C0005BAB9F /* ContentView.swift */; };
@@ -20,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A546FF12877BC7F00B55CDE /* landmarkData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = landmarkData.json; sourceTree = "<group>"; };
 		6AD18A8D287656C0005BAB9F /* LandmarksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksApp.swift; sourceTree = "<group>"; };
 		6AD18A8E287656C0005BAB9F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6AD18A8F287656C7005BAB9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,6 +63,7 @@
 		6AD18A8C287656C0005BAB9F /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				6A546FF12877BC7F00B55CDE /* landmarkData.json */,
 				6AD18A8D287656C0005BAB9F /* LandmarksApp.swift */,
 				6AD18A8E287656C0005BAB9F /* ContentView.swift */,
 				6AD18AAB287661E4005BAB9F /* CircleImage.swift */,
@@ -166,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AD18AA1287656C7005BAB9F /* Assets.xcassets in Resources */,
+				6A546FF22877BC8000B55CDE /* landmarkData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AD18AA2287656C7005BAB9F /* Assets.xcassets in Resources */,
+				6A546FF32877BC8000B55CDE /* landmarkData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
