@@ -102,15 +102,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6A299087287A1B73001E8D80 /* Helpers */ = {
+		6A299087287A1B73001E8D80 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6A299097287C5CD6001E8D80 /* Badges */,
+				6A546FFB2878672300B55CDE /* Landmark */,
+				6A66BBF8287F929700C38AD2 /* Helpers */,
 				6AA160E6287E40D500CBE8B2 /* Hike */,
-				6AD18AAB287661E4005BAB9F /* CircleImage.swift */,
-				6A299084287A1A58001E8D80 /* FavoriteButton.swift */,
-				6AD18AAE28766323005BAB9F /* MapView.swift */,
 			);
-			path = Helpers;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		6A299097287C5CD6001E8D80 /* Badges */ = {
@@ -155,6 +155,16 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		6A66BBF8287F929700C38AD2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6AD18AAB287661E4005BAB9F /* CircleImage.swift */,
+				6A299084287A1A58001E8D80 /* FavoriteButton.swift */,
+				6AD18AAE28766323005BAB9F /* MapView.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		6AA160E6287E40D500CBE8B2 /* Hike */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,11 +188,9 @@
 		6AD18A8C287656C0005BAB9F /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				6A299097287C5CD6001E8D80 /* Badges */,
 				6A546FFD2878674200B55CDE /* Resources */,
 				6A546FFC2878672F00B55CDE /* Model */,
-				6A546FFB2878672300B55CDE /* Landmark */,
-				6A299087287A1B73001E8D80 /* Helpers */,
+				6A299087287A1B73001E8D80 /* Views */,
 				6AD18A8D287656C0005BAB9F /* LandmarksApp.swift */,
 				6AD18A8F287656C7005BAB9F /* Assets.xcassets */,
 			);
