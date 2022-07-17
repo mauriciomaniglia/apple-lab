@@ -55,6 +55,10 @@
 		6AD18AB028766323005BAB9F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD18AAE28766323005BAB9F /* MapView.swift */; };
 		6AEE6777288394C1001D8EA9 /* CategoryHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE6776288394C1001D8EA9 /* CategoryHome.swift */; };
 		6AEE6778288394C1001D8EA9 /* CategoryHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE6776288394C1001D8EA9 /* CategoryHome.swift */; };
+		6AEE677A28844487001D8EA9 /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE677928844487001D8EA9 /* CategoryRow.swift */; };
+		6AEE677B28844488001D8EA9 /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE677928844487001D8EA9 /* CategoryRow.swift */; };
+		6AEE677D288446B4001D8EA9 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE677C288446B4001D8EA9 /* CategoryItem.swift */; };
+		6AEE677E288446B4001D8EA9 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE677C288446B4001D8EA9 /* CategoryItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +89,8 @@
 		6AD18AAB287661E4005BAB9F /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		6AD18AAE28766323005BAB9F /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		6AEE6776288394C1001D8EA9 /* CategoryHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHome.swift; sourceTree = "<group>"; };
+		6AEE677928844487001D8EA9 /* CategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
+		6AEE677C288446B4001D8EA9 /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +228,8 @@
 			isa = PBXGroup;
 			children = (
 				6AEE6776288394C1001D8EA9 /* CategoryHome.swift */,
+				6AEE677928844487001D8EA9 /* CategoryRow.swift */,
+				6AEE677C288446B4001D8EA9 /* CategoryItem.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -328,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AEE677A28844487001D8EA9 /* CategoryRow.swift in Sources */,
 				6AD18A9F287656C7005BAB9F /* ContentView.swift in Sources */,
 				6AEE6777288394C1001D8EA9 /* CategoryHome.swift in Sources */,
 				6A299095287C5C05001E8D80 /* Badge.swift in Sources */,
@@ -336,6 +345,7 @@
 				6A299085287A1A58001E8D80 /* FavoriteButton.swift in Sources */,
 				6A299089287C53D9001E8D80 /* HexagonParameters.swift in Sources */,
 				6AA160E1287E3DA000CBE8B2 /* Hike.swift in Sources */,
+				6AEE677D288446B4001D8EA9 /* CategoryItem.swift in Sources */,
 				6A299092287C5BAF001E8D80 /* RotatedBadgeSymbol.swift in Sources */,
 				6A29908F287C5A5F001E8D80 /* BadgeSymbol.swift in Sources */,
 				6A5470022878728900B55CDE /* LandmarkList.swift in Sources */,
@@ -356,6 +366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AEE677B28844488001D8EA9 /* CategoryRow.swift in Sources */,
 				6AD18AA0287656C7005BAB9F /* ContentView.swift in Sources */,
 				6AEE6778288394C1001D8EA9 /* CategoryHome.swift in Sources */,
 				6A299096287C5C05001E8D80 /* Badge.swift in Sources */,
@@ -364,6 +375,7 @@
 				6A299086287A1A58001E8D80 /* FavoriteButton.swift in Sources */,
 				6A29908A287C53D9001E8D80 /* HexagonParameters.swift in Sources */,
 				6AA160E2287E3DA000CBE8B2 /* Hike.swift in Sources */,
+				6AEE677E288446B4001D8EA9 /* CategoryItem.swift in Sources */,
 				6A299093287C5BAF001E8D80 /* RotatedBadgeSymbol.swift in Sources */,
 				6A299090287C5A5F001E8D80 /* BadgeSymbol.swift in Sources */,
 				6A5470032878728900B55CDE /* LandmarkList.swift in Sources */,
