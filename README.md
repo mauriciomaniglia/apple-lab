@@ -1,2 +1,2 @@
 # apple-playground
-just testing Apple stuff
+Just testing Apple stuff
