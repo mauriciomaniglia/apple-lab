@@ -2,11 +2,12 @@ import CoreData
 
 @objc(ManagedCharacter)
 class ManagedCharacter: NSManagedObject {
-    @NSManaged var id: String
+    @NSManaged var id: Int
     @NSManaged var name: String
     @NSManaged var image: URL
     @NSManaged var species: String
     @NSManaged var gender: String
+    @NSManaged var data: Data?
     @NSManaged var cache: ManagedCache
 }
 

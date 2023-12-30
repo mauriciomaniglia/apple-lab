@@ -2,7 +2,7 @@ import Foundation
 import RickAndMortyAPI
 
 func uniqueCharacter() -> Character {
-    return Character(id: "\(UUID().uuidString)", name: "any", image: anyURL(), species: "any", gender: "any")
+    return Character(id: Int.random(in: 1...100), name: "any", image: anyURL(), species: "any", gender: "any")
 }
 
 func uniqueCharacters() -> (models: [Character], local: [LocalCharacter]) {

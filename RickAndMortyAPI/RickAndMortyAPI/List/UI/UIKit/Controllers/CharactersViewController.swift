@@ -23,6 +23,9 @@ public final class CharactersViewController: UITableViewController, UITableViewD
             vc.onViewIsAppearing = nil
             vc.refresh()
         }
+
+        tableView.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.reuseIdentifier)
+        tableView.separatorStyle = .none
     }
 
     public override func viewIsAppearing(_ animated: Bool) {

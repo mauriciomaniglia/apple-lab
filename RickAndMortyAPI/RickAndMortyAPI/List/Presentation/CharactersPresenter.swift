@@ -15,7 +15,7 @@ public final class CharactersPresenter {
     private let loadingView: CharactersLoadingView
     private let errorView: CharactersErrorView
 
-    private var feedLoadError: String {
+    private var charactersLoadError: String {
         return "Couldn't connect to server"
      }
 
@@ -40,7 +40,7 @@ public final class CharactersPresenter {
     }
 
     public func didFinishLoadingCharacters(with error: Error) {
-        errorView.display(.error(message: feedLoadError))
+        errorView.display(.error(message: charactersLoadError))
         loadingView.display(CharactersLoadingViewModel(isLoading: false))
     }
 }

@@ -1,13 +1,13 @@
 import Foundation
 
 public struct Character: Equatable {
-    public let id: String
+    public let id: Int
     public let name: String
     public let image: URL
     public let species: String
     public let gender: String
 
-    public init(id: String, name: String, image: URL, species: String, gender: String) {
+    public init(id: Int, name: String, image: URL, species: String, gender: String) {
         self.id = id
         self.name = name
         self.image = image

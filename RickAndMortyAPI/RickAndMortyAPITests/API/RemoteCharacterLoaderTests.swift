@@ -71,14 +71,14 @@ class RemoteCharacterLoaderTests: XCTestCase {
         let (sut, client) = makeSUT()
 
         let item1 = makeItem(
-            id: "1",
+            id: 1,
             name: "a name",
             imageURL: URL(string: "http://some-url.com")!,
             species: "a specie",
             gender: "a gender")
 
         let item2 = makeItem(
-            id: "2",
+            id: 2,
             name: "another name",
             imageURL: URL(string: "http://another-url.com")!,
             species: "another specie",
@@ -122,7 +122,7 @@ class RemoteCharacterLoaderTests: XCTestCase {
         return .failure(error)
     }
 
-    private func makeItem(id: String, name: String, imageURL: URL, species: String, gender: String) -> (model: Character, json: [String: Any]) {
+    private func makeItem(id: Int, name: String, imageURL: URL, species: String, gender: String) -> (model: Character, json: [String: Any]) {
         let item = Character(id: id, name: name, image: imageURL, species: species, gender: gender)
 
         let json = [

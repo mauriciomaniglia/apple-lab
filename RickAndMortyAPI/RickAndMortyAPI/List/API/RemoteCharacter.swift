@@ -1,7 +1,7 @@
 import Foundation
 
 struct RemoteCharacter: Decodable {
-    let id: String
+    let id: Int
     let name: String
     let image: URL
     let species: String
