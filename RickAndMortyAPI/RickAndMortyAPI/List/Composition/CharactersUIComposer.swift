@@ -1,17 +1,22 @@
+import Foundation
+import Combine
+
 public final class CharacterUIComposer {
     private init() {}
 
-    public static func charactersComposedWith(characterLoader: CharacterLoader, imageLoader: CharacterImageDataLoader) -> CharactersViewController {
-        let presentationAdapter = CharactersLoaderPresentationAdapter(characterLoader: MainQueueDispatchDecorator(decoratee: characterLoader))
+    public static func charactersComposedWith(
+        characterLoader: @escaping () -> AnyPublisher<[Character], Error>,
+        imageLoader: @escaping (URL) -> CharacterImageDataLoader.Publisher
+    ) -> CharactersViewController {
 
-        let charactersController = makeCharactersViewController(
-            delegate: presentationAdapter,
-            title: CharactersPresenter.title)
+        let presentationAdapter = CharactersLoaderPresentationAdapter(characterLoader: characterLoader)
+
+        let charactersController = makeCharactersViewController(delegate: presentationAdapter, title: CharactersPresenter.title)
+
+        let viewAdapter = CharactersViewAdapter(controller: charactersController, imageLoader: imageLoader)
 
         presentationAdapter.presenter = CharactersPresenter(
-            charactersView: CharactersViewAdapter(
-                controller: charactersController,
-                imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader)),
+            charactersView: viewAdapter,
             loadingView: WeakRefVirtualProxy(charactersController),
             errorView: WeakRefVirtualProxy(charactersController))
 

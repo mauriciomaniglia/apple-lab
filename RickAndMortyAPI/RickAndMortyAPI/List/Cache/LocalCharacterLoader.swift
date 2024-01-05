@@ -34,8 +34,8 @@ extension LocalCharacterLoader: CharacterCache {
     }
 }
 
-extension LocalCharacterLoader: CharacterLoader {
-    public typealias LoadResult = CharacterLoader.Result
+extension LocalCharacterLoader {
+    public typealias LoadResult = Result<[Character], Error>
 
     public func load(completion: @escaping (LoadResult) -> Void) {
         store.retrieve { [weak self] result in
