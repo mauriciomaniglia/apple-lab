@@ -69,14 +69,9 @@
 		F9D9A49D2B34A69800CEC90B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9D9A49C2B34A69800CEC90B /* Preview Assets.xcassets */; };
 		F9D9A4B12B34A69900CEC90B /* RickAndMortyAPIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D9A4B02B34A69900CEC90B /* RickAndMortyAPIUITests.swift */; };
 		F9D9A4B32B34A69900CEC90B /* RickAndMortyAPIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D9A4B22B34A69900CEC90B /* RickAndMortyAPIUITestsLaunchTests.swift */; };
-		F9D9A4C92B34A90C00CEC90B /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D9A4C42B34A90C00CEC90B /* URLSessionHTTPClient.swift */; };
 		F9D9A4CB2B34A90C00CEC90B /* CharacterItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D9A4C62B34A90C00CEC90B /* CharacterItemsMapper.swift */; };
-		F9D9A4CC2B34A90C00CEC90B /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D9A4C72B34A90C00CEC90B /* HTTPClient.swift */; };
 		F9D9A4D02B34A93D00CEC90B /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D9A4CF2B34A93D00CEC90B /* Character.swift */; };
 		F9D9A4D72B34A99800CEC90B /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D9A4D22B34A99800CEC90B /* SharedTestHelpers.swift */; };
-		F9D9A4D82B34A99800CEC90B /* HTTPClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D9A4D32B34A99800CEC90B /* HTTPClientSpy.swift */; };
-		F9D9A4D92B34A99800CEC90B /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D9A4D42B34A99800CEC90B /* URLProtocolStub.swift */; };
-		F9D9A4DA2B34A99800CEC90B /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D9A4D52B34A99800CEC90B /* URLSessionHTTPClientTests.swift */; };
 		F9D9A4DE2B34A9AF00CEC90B /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D9A4DD2B34A9AF00CEC90B /* XCTestCase+MemoryLeakTracking.swift */; };
 		F9E894342B4839A100D25AA9 /* CharacterItemsMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E894332B4839A100D25AA9 /* CharacterItemsMapperTests.swift */; };
 		F9E894362B4843E200D25AA9 /* CharacterImageDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E894352B4843E200D25AA9 /* CharacterImageDataMapper.swift */; };
@@ -166,14 +161,9 @@
 		F9D9A4AC2B34A69900CEC90B /* RickAndMortyAPIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyAPIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9D9A4B02B34A69900CEC90B /* RickAndMortyAPIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyAPIUITests.swift; sourceTree = "<group>"; };
 		F9D9A4B22B34A69900CEC90B /* RickAndMortyAPIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyAPIUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		F9D9A4C42B34A90C00CEC90B /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		F9D9A4C62B34A90C00CEC90B /* CharacterItemsMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterItemsMapper.swift; sourceTree = "<group>"; };
-		F9D9A4C72B34A90C00CEC90B /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		F9D9A4CF2B34A93D00CEC90B /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		F9D9A4D22B34A99800CEC90B /* SharedTestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
-		F9D9A4D32B34A99800CEC90B /* HTTPClientSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClientSpy.swift; sourceTree = "<group>"; };
-		F9D9A4D42B34A99800CEC90B /* URLProtocolStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
-		F9D9A4D52B34A99800CEC90B /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		F9D9A4DD2B34A9AF00CEC90B /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		F9D9A4DF2B34AA2D00CEC90B /* RickAndMortyAPI.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = RickAndMortyAPI.xctestplan; sourceTree = "<group>"; };
 		F9E894332B4839A100D25AA9 /* CharacterItemsMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterItemsMapperTests.swift; sourceTree = "<group>"; };
@@ -476,8 +466,6 @@
 			children = (
 				F9387E7C2B3F5F4B00106DB6 /* Helpers */,
 				F9D9A4C62B34A90C00CEC90B /* CharacterItemsMapper.swift */,
-				F9D9A4C72B34A90C00CEC90B /* HTTPClient.swift */,
-				F9D9A4C42B34A90C00CEC90B /* URLSessionHTTPClient.swift */,
 				F9E894352B4843E200D25AA9 /* CharacterImageDataMapper.swift */,
 			);
 			path = API;
@@ -496,10 +484,7 @@
 		F9D9A4D12B34A96200CEC90B /* API */ = {
 			isa = PBXGroup;
 			children = (
-				F9D9A4D32B34A99800CEC90B /* HTTPClientSpy.swift */,
 				F9D9A4D22B34A99800CEC90B /* SharedTestHelpers.swift */,
-				F9D9A4D42B34A99800CEC90B /* URLProtocolStub.swift */,
-				F9D9A4D52B34A99800CEC90B /* URLSessionHTTPClientTests.swift */,
 				F9E894332B4839A100D25AA9 /* CharacterItemsMapperTests.swift */,
 				F9E894372B48455C00D25AA9 /* CharacterImageDataMapperTests.swift */,
 			);
@@ -671,7 +656,6 @@
 				F9387E592B3F0A2800106DB6 /* ErrorView.swift in Sources */,
 				F9387E492B3F04D800106DB6 /* CharactersErrorViewModel.swift in Sources */,
 				F9387E6F2B3F3D3600106DB6 /* CharacterImageDataLoader.swift in Sources */,
-				F9D9A4CC2B34A90C00CEC90B /* HTTPClient.swift in Sources */,
 				F9A9C7CF2B4734E900ABEED9 /* StartPoint.swift in Sources */,
 				F9387E552B3F082300106DB6 /* CharacterViewModel.swift in Sources */,
 				F98D039B2B39BF2200DAD0EC /* CoreDataCharacterStore+CharacterStore.swift in Sources */,
@@ -689,7 +673,6 @@
 				F9387E5F2B3F0C2F00106DB6 /* UIRefreshControl+Helpers.swift in Sources */,
 				F98D038A2B38662600DAD0EC /* CharacterCachePolicy.swift in Sources */,
 				F9AC19D62B40274F0057C441 /* CharacterImageDataStore.swift in Sources */,
-				F9D9A4C92B34A90C00CEC90B /* URLSessionHTTPClient.swift in Sources */,
 				F9387E532B3F07A900106DB6 /* UIImageView+Animations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -702,11 +685,9 @@
 				F9E894342B4839A100D25AA9 /* CharacterItemsMapperTests.swift in Sources */,
 				F98D03932B388E6400DAD0EC /* LoadCharacterFromCacheUseCaseTests.swift in Sources */,
 				F9D9A4D72B34A99800CEC90B /* SharedTestHelpers.swift in Sources */,
-				F9D9A4D82B34A99800CEC90B /* HTTPClientSpy.swift in Sources */,
 				F98D03AA2B3A1C7700DAD0EC /* XCTestCase+CharacterStoreSpecs.swift in Sources */,
 				F9D9A4DE2B34A9AF00CEC90B /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				F98D03AC2B3A1E6A00DAD0EC /* XCTestCase+FailableRetrieveCharacterStoreSpecs.swift in Sources */,
-				F9D9A4DA2B34A99800CEC90B /* URLSessionHTTPClientTests.swift in Sources */,
 				F98D03952B38902D00DAD0EC /* ValidateCharacterCacheUseCaseTests.swift in Sources */,
 				F9387E672B3F3A1200106DB6 /* CharactersUIIntegrationTests.swift in Sources */,
 				F98D03B02B3A1F1B00DAD0EC /* XCTestCase+FailableDeleteCharacterStoreSpecs.swift in Sources */,
@@ -719,7 +700,6 @@
 				F98D03A82B3A1C0C00DAD0EC /* CharacterStoreSpecs.swift in Sources */,
 				F9387E642B3F356100106DB6 /* CharacterImagePresenterTests.swift in Sources */,
 				F98D038D2B38671C00DAD0EC /* CacheCharacterUseCaseTests.swift in Sources */,
-				F9D9A4D92B34A99800CEC90B /* URLProtocolStub.swift in Sources */,
 				F98D03912B38684F00DAD0EC /* CharacterCacheTestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

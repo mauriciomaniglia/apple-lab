@@ -12,10 +12,10 @@ final class StartPoint {
 
     private lazy var localCharacterLoader: LocalCharacterLoader = {
         LocalCharacterLoader(store: store, currentDate: Date.init)
-    }()    
+    }()
 
-    private lazy var httpClient: HTTPClient = {
-        URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
+    private lazy var httpClient: URLSession = {
+        URLSession(configuration: .ephemeral)
     }()
 
     func viewController() -> UIViewController {
@@ -30,22 +30,22 @@ final class StartPoint {
         let remoteURL = URL(string: "https://rickandmortyapi.com/api/character")!
 
         return httpClient
-            .getPublisher(url: remoteURL)
+            .dataTaskPublisher(for: remoteURL)
             .tryMap(CharacterItemsMapper.map)
             .caching(to: localCharacterLoader)
             .fallback(to: localCharacterLoader.loadPublisher)
     }
 
     private func makeLocalImageLoaderWithRemoteFallback(url: URL) -> CharacterImageDataLoader.Publisher {            
-            let localImageLoader = LocalCharacterImageDataLoader(store: store)
+        let localImageLoader = LocalCharacterImageDataLoader(store: store)
 
-            return localImageLoader
-                .loadImageDataPublisher(from: url)
-                .fallback(to: { [httpClient] in
-                    httpClient
-                        .getPublisher(url: url)
-                        .tryMap(CharacterImageDataMapper.map)
-                        .caching(to: localImageLoader, using: url)
-                })
+        return localImageLoader
+            .loadImageDataPublisher(from: url)
+            .fallback(to: { [httpClient] in
+                httpClient
+                    .dataTaskPublisher(for: url)
+                    .tryMap(CharacterImageDataMapper.map)
+                    .caching(to: localImageLoader, using: url)
+            })
         }
 }

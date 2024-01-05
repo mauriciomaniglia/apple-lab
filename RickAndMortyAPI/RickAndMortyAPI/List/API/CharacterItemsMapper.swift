@@ -25,10 +25,10 @@ public final class CharacterItemsMapper {
         }
     }
 
-    public static func map(_ data: Data, from response: HTTPURLResponse) throws -> [Character] {
-        guard response.statusCode == 200, let root = try? JSONDecoder().decode(Root.self, from: data) else {
-            throw Error.invalidData
-        }
+    public static func map(_ data: Data, from response: URLResponse) throws -> [Character] {
+        guard let httpResponse = response as? HTTPURLResponse,
+                httpResponse.statusCode == 200,
+                let root = try? JSONDecoder().decode(Root.self, from: data) else { throw Error.invalidData }
 
         return root.characters
     }

@@ -5,8 +5,8 @@ public final class CharacterImageDataMapper {
         case invalidData
     }
 
-    public static func map(_ data: Data, from response: HTTPURLResponse) throws -> Data {
-        guard response.isOK, !data.isEmpty else {
+    public static func map(_ data: Data, from response: URLResponse) throws -> Data {
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.isOK, !data.isEmpty else {
             throw Error.invalidData
         }
 

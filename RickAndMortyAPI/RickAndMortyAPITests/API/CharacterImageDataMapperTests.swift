@@ -3,6 +3,14 @@ import RickAndMortyAPI
 
 class CharacterImageDataMapperTests: XCTestCase {
 
+    func test_map_throwsErrorOnNonHTTPResponse() throws {
+        let nonEmptyData = Data("non-empty data".utf8)
+
+        XCTAssertThrowsError(
+            try CharacterImageDataMapper.map(nonEmptyData, from: URLResponse())
+        )
+    }
+
     func test_map_throwsErrorOnNon200HTTPResponse() throws {
         let samples = [199, 201, 300, 400, 500]
 

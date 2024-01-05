@@ -36,6 +36,6 @@ final class CharacterImageDataLoaderPresentationAdapter<View: CharacterImageView
     }
 
     func didCancelImageRequest() {
-        cancellable?.cancel()
+        cancellable?.cancel()        
     }
 }
