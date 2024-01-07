@@ -31,6 +31,7 @@
 		F9387E772B3F3F8900106DB6 /* CharacterImageDataLoaderPresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9387E762B3F3F8900106DB6 /* CharacterImageDataLoaderPresentationAdapter.swift */; };
 		F9387E792B3F5D1100106DB6 /* CharactersViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9387E782B3F5D1100106DB6 /* CharactersViewControllerRepresentable.swift */; };
 		F9387E7E2B3F5F5300106DB6 /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9387E7D2B3F5F5300106DB6 /* HTTPURLResponse+StatusCode.swift */; };
+		F95685592B4B60300085C7B5 /* UIView+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95685582B4B60300085C7B5 /* UIView+Container.swift */; };
 		F98D03822B3862FE00DAD0EC /* LocalCharacterLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98D03812B3862FE00DAD0EC /* LocalCharacterLoader.swift */; };
 		F98D03842B38634200DAD0EC /* CharacterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98D03832B38634200DAD0EC /* CharacterStore.swift */; };
 		F98D03862B38637000DAD0EC /* LocalCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98D03852B38637000DAD0EC /* LocalCharacter.swift */; };
@@ -118,6 +119,7 @@
 		F9387E762B3F3F8900106DB6 /* CharacterImageDataLoaderPresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageDataLoaderPresentationAdapter.swift; sourceTree = "<group>"; };
 		F9387E782B3F5D1100106DB6 /* CharactersViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		F9387E7D2B3F5F5300106DB6 /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
+		F95685582B4B60300085C7B5 /* UIView+Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Container.swift"; sourceTree = "<group>"; };
 		F98D03812B3862FE00DAD0EC /* LocalCharacterLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCharacterLoader.swift; sourceTree = "<group>"; };
 		F98D03832B38634200DAD0EC /* CharacterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStore.swift; sourceTree = "<group>"; };
 		F98D03852B38637000DAD0EC /* LocalCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCharacter.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				F9387E562B3F097C00106DB6 /* UITableView+Dequeueing.swift */,
 				F9387E5A2B3F0A8B00106DB6 /* UITableView+HeaderSizing.swift */,
 				F9387E5E2B3F0C2F00106DB6 /* UIRefreshControl+Helpers.swift */,
+				F95685582B4B60300085C7B5 /* UIView+Container.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -643,6 +646,7 @@
 				F9387E452B3F047500106DB6 /* CharactersViewModel.swift in Sources */,
 				F9387E772B3F3F8900106DB6 /* CharacterImageDataLoaderPresentationAdapter.swift in Sources */,
 				F9387E4E2B3F05B900106DB6 /* CharacterCell.swift in Sources */,
+				F95685592B4B60300085C7B5 /* UIView+Container.swift in Sources */,
 				F9387E732B3F3E2A00106DB6 /* CharactersViewAdapter.swift in Sources */,
 				F98D039D2B39C01D00DAD0EC /* CoreDataHelpers.swift in Sources */,
 				F9387E592B3F0A2800106DB6 /* ErrorView.swift in Sources */,

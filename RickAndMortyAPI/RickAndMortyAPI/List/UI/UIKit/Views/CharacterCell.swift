@@ -18,6 +18,7 @@ public final class CharacterCell: UITableViewCell {
     private(set) public var characterRetryButton: UIButton = {
         let button = UIButton()
         button.setTitle("↻", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 60)
         return button
     }()
 
@@ -34,6 +35,8 @@ public final class CharacterCell: UITableViewCell {
     }
     
     private func setupView() {
+        characterContainer.backgroundColor = .secondarySystemBackground
+
         contentView.addSubview(stackView)
         characterContainer.addSubview(characterRetryButton)
         characterContainer.addSubview(characterImageView)

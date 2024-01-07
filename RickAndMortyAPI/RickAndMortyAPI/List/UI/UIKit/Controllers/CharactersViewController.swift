@@ -1,7 +1,7 @@
 import UIKit
 
 public final class CharactersViewController: UITableViewController, UITableViewDataSourcePrefetching, CharactersLoadingView, CharactersErrorView {
-    private(set) public var errorView: ErrorView?
+    private(set) public var errorView = ErrorView()
 
     public var didRequestCharactersRefresh: (() -> Void)?
 
@@ -15,13 +15,12 @@ public final class CharactersViewController: UITableViewController, UITableViewD
     public override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureTableView()
+
         onViewIsAppearing = { vc in
             vc.onViewIsAppearing = nil
             vc.refresh()
         }
-
-        tableView.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.reuseIdentifier)
-        tableView.separatorStyle = .none
     }
 
     public override func viewIsAppearing(_ animated: Bool) {
@@ -50,7 +49,7 @@ public final class CharactersViewController: UITableViewController, UITableViewD
      }
 
     public func display(_ viewModel: CharactersErrorViewModel) {
-         errorView?.message = viewModel.message
+         errorView.message = viewModel.message
      }
 
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,6 +83,19 @@ public final class CharactersViewController: UITableViewController, UITableViewD
     private func cancelCellControllerLoad(forRowAt indexPath: IndexPath) {
         loadingControllers[indexPath]?.cancelLoad()
         loadingControllers[indexPath] = nil
+    }
+
+    private func configureTableView() {
+        tableView.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.reuseIdentifier)
+        tableView.separatorStyle = .none
+        
+        tableView.tableHeaderView = errorView.makeContainer()
+
+        errorView.onHide = { [weak self] in
+            self?.tableView.beginUpdates()
+            self?.tableView.sizeTableHeaderToFit()
+            self?.tableView.endUpdates()
+        }
     }
 }
 
