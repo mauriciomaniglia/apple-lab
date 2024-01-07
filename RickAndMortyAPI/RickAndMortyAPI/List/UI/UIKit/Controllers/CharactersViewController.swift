@@ -1,13 +1,9 @@
 import UIKit
 
-public protocol CharactersViewControllerDelegate {
-   func didRequestCharactersRefresh()
-}
-
 public final class CharactersViewController: UITableViewController, UITableViewDataSourcePrefetching, CharactersLoadingView, CharactersErrorView {
     private(set) public var errorView: ErrorView?
 
-    public var delegate: CharactersViewControllerDelegate?
+    public var didRequestCharactersRefresh: (() -> Void)?
 
     private var tableModel = [CharacterCellController]() {
         didSet { tableView.reloadData() }
@@ -45,8 +41,8 @@ public final class CharactersViewController: UITableViewController, UITableViewD
         tableModel = cellControllers
      }
 
-    private func refresh() {
-         delegate?.didRequestCharactersRefresh()
+    private func refresh() {         
+        didRequestCharactersRefresh?()
      }
 
     public func display(_ viewModel: CharactersLoadingViewModel) {

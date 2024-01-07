@@ -1,32 +1,84 @@
-import Foundation
+import UIKit
+import CoreData
 import Combine
 
-public final class CharacterUIComposer {
-    private init() {}
+final class CharactersUIComposer {
+    private lazy var scheduler: AnyDispatchQueueScheduler = DispatchQueue(
+        label: "com.rick-and-morty.infra.queue",
+        qos: .userInitiated,
+        attributes: .concurrent
+    ).eraseToAnyScheduler()
 
-    public static func charactersComposedWith(
-        characterLoader: @escaping () -> AnyPublisher<[Character], Error>,
-        imageLoader: @escaping (URL) -> CharacterImageDataLoader.Publisher
-    ) -> CharactersViewController {
+    var store: CharacterStore & CharacterImageDataStore = {
+        try! CoreDataCharacterStore(
+            storeURL: NSPersistentContainer
+            .defaultDirectoryURL()
+            .appendingPathComponent("feed-store.sqlite"))
+    }()
 
-        let presentationAdapter = CharactersLoaderPresentationAdapter(characterLoader: characterLoader)
+    private lazy var localCharacterLoader: LocalCharacterLoader = {
+        LocalCharacterLoader(store: store, currentDate: Date.init)
+    }()
 
-        let charactersController = makeCharactersViewController(delegate: presentationAdapter, title: CharactersPresenter.title)
+    private lazy var httpClient: URLSession = {
+        URLSession(configuration: .ephemeral)
+    }()
 
-        let viewAdapter = CharactersViewAdapter(controller: charactersController, imageLoader: imageLoader)
+    private var presenter: CharactersPresenter?
+    private var cancellable: Cancellable?
 
-        presentationAdapter.presenter = CharactersPresenter(
-            charactersView: viewAdapter,
-            loadingView: WeakRefVirtualProxy(charactersController),
-            errorView: WeakRefVirtualProxy(charactersController))
+    func viewController() -> UIViewController {
+        let viewController = CharactersViewController()
+        viewController.didRequestCharactersRefresh = makeRemoteCharacterLoaderWithLocalFallback
+        viewController.title = CharactersPresenter.title
 
-        return charactersController
+        let viewAdapter = CharactersViewAdapter(controller: viewController, imageLoader: makeLocalImageLoaderWithRemoteFallback)
+
+        presenter = CharactersPresenter(
+                    charactersView: viewAdapter,
+                    loadingView: WeakRefVirtualProxy(viewController),
+                    errorView: WeakRefVirtualProxy(viewController))
+
+        return viewController
     }
 
-    private static func makeCharactersViewController(delegate: CharactersViewControllerDelegate, title: String) -> CharactersViewController {
-        let charactersController = CharactersViewController()
-        charactersController.delegate = delegate
-        charactersController.title = title
-        return charactersController
+    private func makeRemoteCharacterLoaderWithLocalFallback() {
+        let remoteURL = URL(string: "https://rickandmortyapi.com/api/character")!
+
+        cancellable = httpClient
+            .dataTaskPublisher(for: remoteURL)
+            .tryMap(CharacterItemsMapper.map)
+            .caching(to: localCharacterLoader)
+            .subscribe(on: scheduler)
+            .fallback(to: localCharacterLoader.loadPublisher)
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { [weak self] completion in
+                    switch completion {
+                    case .finished: break
+
+                    case let .failure(error):
+                        self?.presenter?.didFinishLoadingCharacters(with: error)
+                    }
+                }, receiveValue: { [weak self] characters in
+                    self?.presenter?.didFinishLoadingCharacters(with: characters)
+                })
+    }
+
+    private func makeLocalImageLoaderWithRemoteFallback(url: URL) -> CharacterImageDataLoader.Publisher {            
+        let localImageLoader = LocalCharacterImageDataLoader(store: store)
+
+        return localImageLoader
+            .loadImageDataPublisher(from: url)
+            .fallback(to: { [httpClient, scheduler] in
+                httpClient
+                    .dataTaskPublisher(for: url)
+                    .tryMap(CharacterImageDataMapper.map)
+                    .caching(to: localImageLoader, using: url)
+                    .subscribe(on: scheduler)
+                    .eraseToAnyPublisher()
+            })
+            .subscribe(on: scheduler)
+            .eraseToAnyPublisher()
     }
 }
