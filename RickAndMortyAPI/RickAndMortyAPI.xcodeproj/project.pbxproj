@@ -57,7 +57,7 @@
 		F98D03B22B3A1F6700DAD0EC /* CoreDataCharacterStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98D03B12B3A1F6700DAD0EC /* CoreDataCharacterStoreTests.swift */; };
 		F9A9C7CD2B4732FB00ABEED9 /* CombineHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A9C7CC2B4732FB00ABEED9 /* CombineHelpers.swift */; };
 		F9A9C7CF2B4734E900ABEED9 /* StartPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A9C7CE2B4734E900ABEED9 /* StartPoint.swift */; };
-		F9AC19D42B4026BB0057C441 /* CoreDataCharacterStore+CharacterImageDataLoader.swif.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AC19D32B4026BB0057C441 /* CoreDataCharacterStore+CharacterImageDataLoader.swif.swift */; };
+		F9AC19D42B4026BB0057C441 /* CoreDataCharacterStore+CharacterImageDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AC19D32B4026BB0057C441 /* CoreDataCharacterStore+CharacterImageDataStore.swift */; };
 		F9AC19D62B40274F0057C441 /* CharacterImageDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AC19D52B40274F0057C441 /* CharacterImageDataStore.swift */; };
 		F9AC19D82B4028ED0057C441 /* LoadCharacterImageDataFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AC19D72B4028ED0057C441 /* LoadCharacterImageDataFromCacheUseCaseTests.swift */; };
 		F9AC19DA2B4029F30057C441 /* LocalCharacterImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AC19D92B4029F30057C441 /* LocalCharacterImageDataLoader.swift */; };
@@ -146,7 +146,7 @@
 		F98D03B12B3A1F6700DAD0EC /* CoreDataCharacterStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCharacterStoreTests.swift; sourceTree = "<group>"; };
 		F9A9C7CC2B4732FB00ABEED9 /* CombineHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineHelpers.swift; sourceTree = "<group>"; };
 		F9A9C7CE2B4734E900ABEED9 /* StartPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPoint.swift; sourceTree = "<group>"; };
-		F9AC19D32B4026BB0057C441 /* CoreDataCharacterStore+CharacterImageDataLoader.swif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataCharacterStore+CharacterImageDataLoader.swif.swift"; sourceTree = "<group>"; };
+		F9AC19D32B4026BB0057C441 /* CoreDataCharacterStore+CharacterImageDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataCharacterStore+CharacterImageDataStore.swift"; sourceTree = "<group>"; };
 		F9AC19D52B40274F0057C441 /* CharacterImageDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageDataStore.swift; sourceTree = "<group>"; };
 		F9AC19D72B4028ED0057C441 /* LoadCharacterImageDataFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCharacterImageDataFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		F9AC19D92B4029F30057C441 /* LocalCharacterImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCharacterImageDataLoader.swift; sourceTree = "<group>"; };
@@ -344,7 +344,7 @@
 			children = (
 				F98D03982B39BECA00DAD0EC /* CoreDataCharacterStore.swift */,
 				F98D039A2B39BF2200DAD0EC /* CoreDataCharacterStore+CharacterStore.swift */,
-				F9AC19D32B4026BB0057C441 /* CoreDataCharacterStore+CharacterImageDataLoader.swif.swift */,
+				F9AC19D32B4026BB0057C441 /* CoreDataCharacterStore+CharacterImageDataStore.swift */,
 				F98D039C2B39C01D00DAD0EC /* CoreDataHelpers.swift */,
 				F98D039E2B39C03A00DAD0EC /* ManagedCache.swift */,
 				F98D03A02B39C09B00DAD0EC /* ManagedCharacter.swift */,
@@ -669,7 +669,7 @@
 				F9387E432B3F040600106DB6 /* CharactersPresenter.swift in Sources */,
 				F9D9A4962B34A69700CEC90B /* RickAndMortyAPIApp.swift in Sources */,
 				F9A9C7CD2B4732FB00ABEED9 /* CombineHelpers.swift in Sources */,
-				F9AC19D42B4026BB0057C441 /* CoreDataCharacterStore+CharacterImageDataLoader.swif.swift in Sources */,
+				F9AC19D42B4026BB0057C441 /* CoreDataCharacterStore+CharacterImageDataStore.swift in Sources */,
 				F9387E5F2B3F0C2F00106DB6 /* UIRefreshControl+Helpers.swift in Sources */,
 				F98D038A2B38662600DAD0EC /* CharacterCachePolicy.swift in Sources */,
 				F9AC19D62B40274F0057C441 /* CharacterImageDataStore.swift in Sources */,

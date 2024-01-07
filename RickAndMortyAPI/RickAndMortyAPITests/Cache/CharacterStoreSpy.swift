@@ -9,50 +9,50 @@ class CharacterStoreSpy: CharacterStore {
     }
 
     private(set) var receivedMessages = [ReceivedMessage]()
-    private var deletionCompletions = [DeletionCompletion]()
-    private var insertionCompletions = [InsertionCompletion]()
-    private var retrievalCompletions = [RetrievalCompletion]()
+    private var deletionResult: Result<Void, Error>?
+    private var insertionResult: Result<Void, Error>?
+    private var retrievalResult: Result<CachedCharacter?, Error>?
 
-    func deleteCachedCharacter(completion: @escaping DeletionCompletion) {
-        deletionCompletions.append(completion)
+    func deleteCachedCharacter() throws {
         receivedMessages.append(.deleteCacheCharacter)
+        try deletionResult?.get()
     }
 
-    func completeDeletion(with error: Error, at index: Int = 0) {
-        deletionCompletions[index](.failure(error))
+    func completeDeletion(with error: Error) {
+        deletionResult = .failure(error)
     }
 
-    func completeDeletionSuccessfully(at index: Int = 0) {
-        deletionCompletions[index](.success(()))
+    func completeDeletionSuccessfully() {
+        deletionResult = .success(())
     }
 
-    func insert(_ characters:[LocalCharacter], timestamp: Date, completion: @escaping InsertionCompletion) {
-        insertionCompletions.append(completion)
+    func insert(_ characters:[LocalCharacter], timestamp: Date) throws {
         receivedMessages.append(.insert(characters, timestamp))
+        try insertionResult?.get()
     }
 
-    func completeInsertion(with error: Error, at index: Int = 0) {
-        insertionCompletions[index](.failure(error))
+    func completeInsertion(with error: Error) {
+        insertionResult = .failure(error)
     }
 
-    func completeInsertionSuccessfully(at index: Int = 0) {
-        insertionCompletions[index](.success(()))
+    func completeInsertionSuccessfully() {
+        insertionResult = .success(())
     }
 
-    func retrieve(completion: @escaping RetrievalCompletion) {
-        retrievalCompletions.append(completion)
+    func retrieve() throws -> CachedCharacter? {
         receivedMessages.append(.retrieve)
+        return try retrievalResult?.get()
     }
 
-    func completeRetrieval(with error: Error, at index: Int = 0) {
-        retrievalCompletions[index](.failure(error))
+    func completeRetrieval(with error: Error) {
+        retrievalResult = .failure(error)
     }
 
-    func completeRetrievalWithEmptyCache(at index: Int = 0) {
-        retrievalCompletions[index](.success(.none))
+    func completeRetrievalWithEmptyCache() {
+        retrievalResult = .success(.none)
     }
 
-    func completeRetrieval(with characters: [LocalCharacter], timestamp: Date,  at index: Int = 0) {
-        retrievalCompletions[index](.success(CachedCharacter(localCharacters: characters, timestamp: timestamp)))
+    func completeRetrieval(with characters: [LocalCharacter], timestamp: Date) {
+        retrievalResult = .success(CachedCharacter(localCharacters: characters, timestamp: timestamp))        
     }
 }

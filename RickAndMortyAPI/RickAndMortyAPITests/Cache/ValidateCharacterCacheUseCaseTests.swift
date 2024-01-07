@@ -11,18 +11,18 @@ class ValidateCharacterCacheUseCaseTests: XCTestCase {
 
     func test_validateCache_deletesCacheOnRetrievalError() {
         let (sut, store) = makeSUT()
-
-        sut.validateCache { _ in }
         store.completeRetrieval(with: anyNSError())
+
+        try? sut.validateCache()
 
         XCTAssertEqual(store.receivedMessages, [.retrieve, .deleteCacheCharacter])
     }
 
     func test_validateCache_doesNotDeletesCacheOnEmptyCache() {
         let (sut, store) = makeSUT()
-
-        sut.validateCache { _ in }
         store.completeRetrievalWithEmptyCache()
+
+        try? sut.validateCache()
 
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
@@ -32,9 +32,9 @@ class ValidateCharacterCacheUseCaseTests: XCTestCase {
         let fixCurrentDate = Date()
         let nonExpiredTimestamp = fixCurrentDate.minusCharacterCacheMaxAge().adding(seconds: 1)
         let (sut, store) = makeSUT(currentDate: { fixCurrentDate })
-
-        sut.validateCache { _ in }
         store.completeRetrieval(with: character.local, timestamp: nonExpiredTimestamp)
+
+        try? sut.validateCache()
 
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
@@ -44,9 +44,9 @@ class ValidateCharacterCacheUseCaseTests: XCTestCase {
         let fixCurrentDate = Date()
         let expirationTimestamp = fixCurrentDate.minusCharacterCacheMaxAge()
         let (sut, store) = makeSUT(currentDate: { fixCurrentDate })
-
-        sut.validateCache { _ in }
         store.completeRetrieval(with: character.local, timestamp: expirationTimestamp)
+
+        try? sut.validateCache()
 
         XCTAssertEqual(store.receivedMessages, [.retrieve, .deleteCacheCharacter])
     }
@@ -56,22 +56,11 @@ class ValidateCharacterCacheUseCaseTests: XCTestCase {
         let fixCurrentDate = Date()
         let expiredTimestamp = fixCurrentDate.minusCharacterCacheMaxAge().adding(seconds: -1)
         let (sut, store) = makeSUT(currentDate: { fixCurrentDate })
-
-        sut.validateCache { _ in }
         store.completeRetrieval(with: character.local, timestamp: expiredTimestamp)
 
+        try? sut.validateCache()
+
         XCTAssertEqual(store.receivedMessages, [.retrieve, .deleteCacheCharacter])
-    }
-
-    func test_validateCache_doesNotDeleteInvalidCacheAfterSUTInstanceHasBeenDeallocated() {
-        let store = CharacterStoreSpy()
-        var sut: LocalCharacterLoader? = LocalCharacterLoader(store: store, currentDate: Date.init)
-
-        sut?.validateCache { _ in }
-        sut = nil
-        store.completeRetrieval(with: anyNSError())
-
-        XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
 
     func test_validateCache_failsOnDeletionErrorOfFailedRetrieval() {
@@ -149,25 +138,18 @@ class ValidateCharacterCacheUseCaseTests: XCTestCase {
         return (sut, store)
     }
 
-    private func expect(_ sut: LocalCharacterLoader, toCompleteWith expectedResult: LocalCharacterLoader.ValidationResult, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
-        let exp = expectation(description: "Wait for load completion")
-
-        sut.validateCache { receivedResult in
-            switch (receivedResult, expectedResult) {
-            case (.success, .success):
-                break
-
-            case let (.failure(receivedError as NSError), .failure(expectedError as NSError)):
-                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
-
-            default:
-                XCTFail("Expected result \(expectedResult), got \(receivedResult) instead", file: file, line: line)
-            }
-
-            exp.fulfill()
-        }
-
+    private func expect(_ sut: LocalCharacterLoader, toCompleteWith expectedResult: Result<Void, Error>, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         action()
-        wait(for: [exp], timeout: 1.0)
+
+        let receivedResult = Result { try sut.validateCache() }
+
+        switch (receivedResult, expectedResult) {
+        case (.success, .success):
+            break
+        case let (.failure(receivedError as NSError), .failure(expectedError as NSError)):
+            XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+        default:
+            XCTFail("Expected result \(expectedResult), got \(receivedResult) instead", file: file, line: line)
+        }
     }
 }

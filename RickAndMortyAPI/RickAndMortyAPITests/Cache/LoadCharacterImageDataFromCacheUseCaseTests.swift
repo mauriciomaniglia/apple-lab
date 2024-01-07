@@ -13,7 +13,7 @@ class LoadCharacterImageDataFromCacheUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
         let url = anyURL()
 
-        _ = sut.loadImageData(from: url) { _ in }
+        _ = try? sut.loadImageData(from: url)
 
         XCTAssertEqual(store.receivedMessages, [.retrieve(dataFor: url)])
     }
@@ -44,34 +44,6 @@ class LoadCharacterImageDataFromCacheUseCaseTests: XCTestCase {
         })
     }
 
-    func test_loadImageDataFromURL_doesNotDeliverResultAfterCancellingTask() {
-        let (sut, store) = makeSUT()
-        let foundData = anyData()
-
-        var received = [CharacterImageDataLoader.Result]()
-        let task = sut.loadImageData(from: anyURL()) { received.append($0) }
-        task.cancel()
-
-        store.completeRetrieval(with: foundData)
-        store.completeRetrieval(with: .none)
-        store.completeRetrieval(with: anyNSError())
-
-        XCTAssertTrue(received.isEmpty, "Expected no received results after cancelling task")
-    }
-
-    func test_loadImageDataFromURL_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
-        let store = CharacterImageDataStoreSpy()
-        var sut: LocalCharacterImageDataLoader? = LocalCharacterImageDataLoader(store: store)
-
-        var received = [CharacterImageDataLoader.Result]()
-        _ = sut?.loadImageData(from: anyURL()) { received.append($0) }
-
-        sut = nil
-        store.completeRetrieval(with: anyData())
-
-        XCTAssertTrue(received.isEmpty, "Expected no received results after instance has been deallocated")
-     }
-
     // MARK: - Helpers
 
     private func makeSUT(currentDate: @escaping () -> Date = Date.init, file: StaticString = #file, line: UInt = #line) -> (sut: LocalCharacterImageDataLoader, store: CharacterImageDataStoreSpy) {
@@ -82,11 +54,11 @@ class LoadCharacterImageDataFromCacheUseCaseTests: XCTestCase {
         return (sut, store)
     }
 
-    private func failed() -> CharacterImageDataLoader.Result {
+    private func failed() -> Result<Data, Error> {
         return .failure(LocalCharacterImageDataLoader.LoadError.failed)
     }
 
-    private func notFound() -> CharacterImageDataLoader.Result {
+    private func notFound() -> Result<Data, Error> {
         return .failure(LocalCharacterImageDataLoader.LoadError.notFound)
     }
 
@@ -94,27 +66,22 @@ class LoadCharacterImageDataFromCacheUseCaseTests: XCTestCase {
         XCTFail("Expected no no invocations", file: file, line: line)
     }
 
-    private func expect(_ sut: LocalCharacterImageDataLoader, toCompleteWith expectedResult: CharacterImageDataLoader.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
-        let exp = expectation(description: "Wait for load completion")
-
-        _ = sut.loadImageData(from: anyURL()) { receivedResult in
-            switch (receivedResult, expectedResult) {
-            case let (.success(receivedData), .success(expectedData)):
-                XCTAssertEqual(receivedData, expectedData, file: file, line: line)
-
-            case (.failure(let receivedError as LocalCharacterImageDataLoader.LoadError),
-                .failure(let expectedError as LocalCharacterImageDataLoader.LoadError)):
-                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
-
-            default:
-                XCTFail("Expected result \(expectedResult), got \(receivedResult) instead", file: file, line: line)
-            }
-
-            exp.fulfill()
-        }
+    private func expect(_ sut: LocalCharacterImageDataLoader, toCompleteWith expectedResult: Result<Data, Error>, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
 
         action()
-        wait(for: [exp], timeout: 1.0)
+
+        let receivedResult = Result { try sut.loadImageData(from: anyURL()) }
+
+        switch (receivedResult, expectedResult) {
+        case let (.success(receivedData), .success(expectedData)):
+            XCTAssertEqual(receivedData, expectedData, file: file, line: line)
+
+        case (.failure(let receivedError as LocalCharacterImageDataLoader.LoadError),
+              .failure(let expectedError as LocalCharacterImageDataLoader.LoadError)):
+            XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+        default:
+            XCTFail("Expected result \(expectedResult), got \(receivedResult) instead", file: file, line: line)
+        }
     }
 
 }

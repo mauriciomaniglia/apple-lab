@@ -9,20 +9,12 @@ class CacheCharacterUseCaseTests: XCTestCase {
         XCTAssertEqual(store.receivedMessages, [])
     }
 
-    func test_save_requestCacheDeletion() {
-        let (sut, store) = makeSUT()
-
-        sut.save(uniqueCharacters().models) { _ in }
-
-        XCTAssertEqual(store.receivedMessages, [.deleteCacheCharacter])
-    }
-
     func test_save_doesNotRequestCacheInsertionOnDeletionError() {
         let (sut, store) = makeSUT()
         let deletionError = anyNSError()
-
-        sut.save(uniqueCharacters().models) { _ in }
         store.completeDeletion(with: deletionError)
+
+        try? sut.save(uniqueCharacters().models)
 
         XCTAssertEqual(store.receivedMessages, [.deleteCacheCharacter])
     }
@@ -31,9 +23,9 @@ class CacheCharacterUseCaseTests: XCTestCase {
         let timestamp = Date()
         let character = uniqueCharacters()
         let (sut, store) = makeSUT(currentDate: { timestamp })
-
-        sut.save(character.models) { _ in }
         store.completeDeletionSuccessfully()
+
+        try? sut.save(character.models)
 
         XCTAssertEqual(store.receivedMessages, [.deleteCacheCharacter, .insert(character.local, timestamp)])
     }
@@ -66,33 +58,6 @@ class CacheCharacterUseCaseTests: XCTestCase {
         })
     }
 
-    func test_save_doesNotDeliverDeletionErrorAfterSUTInstanceHasBeenDeallocated() {
-        let store = CharacterStoreSpy()
-        var sut: LocalCharacterLoader? = LocalCharacterLoader(store: store, currentDate: Date.init)
-
-        var receivedError = [LocalCharacterLoader.SaveResult]()
-        sut?.save(uniqueCharacters().models, completion: { receivedError.append($0) })
-
-        sut = nil
-        store.completeDeletion(with: anyNSError())
-
-        XCTAssertTrue(receivedError.isEmpty)
-    }
-
-    func test_save_doesNotDeliverInsertionErrorAfterSUTInstanceHasBeenDeallocated() {
-        let store = CharacterStoreSpy()
-        var sut: LocalCharacterLoader? = LocalCharacterLoader(store: store, currentDate: Date.init)
-
-        var receivedError = [LocalCharacterLoader.SaveResult]()
-        sut?.save(uniqueCharacters().models, completion: { receivedError.append($0) })
-
-        store.completeDeletionSuccessfully()
-        sut = nil
-        store.completeInsertion(with: anyNSError())
-
-        XCTAssertTrue(receivedError.isEmpty)
-    }
-
     // MARK: - Helpers
 
     private func makeSUT(currentDate: @escaping () -> Date = Date.init, file: StaticString = #file, line: UInt = #line) -> (sut: LocalCharacterLoader, store: CharacterStoreSpy) {
@@ -106,20 +71,14 @@ class CacheCharacterUseCaseTests: XCTestCase {
     }
 
     private func expect(_ sut: LocalCharacterLoader, toCompleteWithError expectedError: NSError?, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
-        let exp = expectation(description: "Wait for save completion")
-
-        var receivedError: Error?
-        sut.save(uniqueCharacters().models) { result in
-            if case let Result.failure(error) = result { receivedError = error }
-
-            exp.fulfill()
-        }
 
         action()
 
-        wait(for: [exp], timeout: 1.0)
-
-        XCTAssertEqual(receivedError as NSError?, expectedError)
+        do {
+            try sut.save(uniqueCharacters().models)
+        } catch {
+            XCTAssertEqual(error as NSError?, expectedError, file: file, line: line)
+        }
     }
 }
 

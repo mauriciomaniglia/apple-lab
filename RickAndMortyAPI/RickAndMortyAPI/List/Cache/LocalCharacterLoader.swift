@@ -11,67 +11,31 @@ public final class LocalCharacterLoader {
 }
 
 extension LocalCharacterLoader: CharacterCache {
-    public typealias SaveResult = CharacterCache.Result
-
-    public func save(_ character: [Character], completion: @escaping (SaveResult) -> Void) {
-        store.deleteCachedCharacter { [weak self] deletionResult in
-            guard let self = self else { return }
-
-            switch deletionResult {
-                case .success:
-                    self.cache(character, with: completion)
-                case let .failure(error):
-                    completion(.failure(error))
-            }
-        }
-    }
-
-    private func cache(_ character: [Character], with completion: @escaping (SaveResult) -> Void) {
-        store.insert(character.toLocal(), timestamp: currentDate()) { [weak self] insertionResult in
-            guard self != nil else { return }
-            completion(insertionResult)
-        }
+    public func save(_ characters: [Character]) throws {
+        try store.deleteCachedCharacter()
+        try store.insert(characters.toLocal(), timestamp: currentDate())
     }
 }
 
 extension LocalCharacterLoader {
-    public typealias LoadResult = Result<[Character], Error>
-
-    public func load(completion: @escaping (LoadResult) -> Void) {
-        store.retrieve { [weak self] result in
-            guard let self = self else { return }
-
-            switch result {
-            case let .failure(error):
-                completion(.failure(error))
-
-            case let .success(.some(cache)) where CharacterCachePolicy.validate(cache.timestamp, against: self.currentDate()):
-                completion(.success(cache.localCharacters.toModels()))
-
-            case .success:
-                completion(.success([]))
-            }
+    public func load() throws -> [Character] {
+        if let cache = try store.retrieve(), CharacterCachePolicy.validate(cache.timestamp, against: currentDate()) {
+            return cache.localCharacters.toModels()
         }
+        return []
     }
 }
 
 extension LocalCharacterLoader {
-    public typealias ValidationResult = Result<Void, Error>
+    private struct InvalidCache: Error {}
 
-    public func validateCache(completion: @escaping (ValidationResult) -> Void) {
-        store.retrieve { [weak self] result in
-            guard let self = self else  { return }
-
-            switch result {
-            case .failure:
-                self.store.deleteCachedCharacter(completion: completion)
-
-            case let .success(.some(cache)) where !CharacterCachePolicy.validate(cache.timestamp, against: self.currentDate()):
-                self.store.deleteCachedCharacter(completion: completion)
-
-            case .success:
-                completion(.success(()))
+    public func validateCache() throws {
+        do {
+            if let cache = try store.retrieve(), !CharacterCachePolicy.validate(cache.timestamp, against: currentDate()) {
+                throw InvalidCache()
             }
+        } catch {
+            try store.deleteCachedCharacter()
         }
     }
 }
