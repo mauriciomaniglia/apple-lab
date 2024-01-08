@@ -1,5 +1,3 @@
-import Foundation
-
 public struct CharacterViewModel<Image> {
     public let name: String
     public let image: Image?

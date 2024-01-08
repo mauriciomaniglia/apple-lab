@@ -1,5 +1,9 @@
 public protocol CharactersView {
-    func display(_ viewModel: CharactersViewModel)
+    func display(_ characters: [Character])
+}
+
+public struct CharactersLoadingViewModel {
+    public let isLoading: Bool
 }
 
 public protocol CharactersLoadingView {
@@ -35,7 +39,7 @@ public final class CharactersPresenter {
     }
 
     public func didFinishLoadingCharacters(with characters: [Character]) {
-        charactersView.display(CharactersViewModel(characters: characters))
+        charactersView.display(characters)
         loadingView.display(CharactersLoadingViewModel(isLoading: false))
     }
 

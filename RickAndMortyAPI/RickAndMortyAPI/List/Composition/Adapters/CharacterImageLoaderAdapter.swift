@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-final class CharacterImageDataLoaderPresentationAdapter<View: CharacterImageView, Image>: CharacterCellControllerDelegate where View.Image == Image {
+final class CharacterImageLoaderAdapter<View: CharacterImageView, Image>: CharacterCellControllerDelegate where View.Image == Image {
 
     private let model: Character
     private let imageLoader: (URL) -> CharacterImageDataLoader.Publisher
@@ -18,8 +18,7 @@ final class CharacterImageDataLoaderPresentationAdapter<View: CharacterImageView
         presenter?.didStartLoadingImageData(for: model)
 
         let model = self.model
-        cancellable = imageLoader(model.image)
-            //.dispatchOnMainQueue()
+        cancellable = imageLoader(model.image)            
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { [weak self] completion in

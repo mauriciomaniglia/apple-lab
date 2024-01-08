@@ -10,14 +10,12 @@ final class CharactersViewAdapter: CharactersView {
        self.imageLoader = imageLoader
    }
 
-    func display(_ viewModel: CharactersViewModel) {
-        controller?.display(viewModel.characters.map { model in
-            let adapter = CharacterImageDataLoaderPresentationAdapter<WeakRefVirtualProxy<CharacterCellController>, UIImage>(model: model, imageLoader: imageLoader)
+    func display(_ characters: [Character]) {
+        controller?.display(characters.map { model in
+            let adapter = CharacterImageLoaderAdapter<WeakRefVirtualProxy<CharacterCellController>, UIImage>(model: model, imageLoader: imageLoader)
             let view = CharacterCellController(delegate: adapter)
-            adapter.presenter = CharacterImagePresenter(
-                view: WeakRefVirtualProxy(view),
-                imageTransformer: UIImage.init)
-
+            adapter.presenter = CharacterImagePresenter(view: WeakRefVirtualProxy(view), imageTransformer: UIImage.init)
+            
             return view
         })
    }

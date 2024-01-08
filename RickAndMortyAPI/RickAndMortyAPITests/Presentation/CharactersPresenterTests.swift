@@ -74,8 +74,8 @@ class CharactersPresenterTests: XCTestCase {
             messages.append(.display(isLoading: viewModel.isLoading))
         }
 
-        func display(_ viewModel: CharactersViewModel) {
-            messages.append(.display(characters: viewModel.characters))
+        func display(_ characters: [Character]) {
+            messages.append(.display(characters: characters))
         }
     }
 
