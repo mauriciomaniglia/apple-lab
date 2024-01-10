@@ -4,6 +4,7 @@ public final class CharactersViewController: UITableViewController, UITableViewD
     private(set) public var errorView = ErrorView()
 
     public var didRequestCharactersRefresh: (() -> Void)?
+    public var didRequestLoadMoreCharacters: ((CharactersViewController) -> Void)?
 
     private var tableModel = [CharacterCellController]() {
         didSet { tableView.reloadData() }
@@ -60,6 +61,12 @@ public final class CharactersViewController: UITableViewController, UITableViewD
         return cellController(forRowAt: indexPath).view(in: tableView)
     }
 
+    public override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == tableModel.count-1 {
+            didRequestLoadMoreCharacters?(self)
+        }
+    }
+
     public override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cancelCellControllerLoad(forRowAt: indexPath)
     }
@@ -86,6 +93,7 @@ public final class CharactersViewController: UITableViewController, UITableViewD
     }
 
     private func configureTableView() {
+        tableView.prefetchDataSource = self
         tableView.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.reuseIdentifier)
         tableView.separatorStyle = .none
         

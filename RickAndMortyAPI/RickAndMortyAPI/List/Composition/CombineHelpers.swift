@@ -31,12 +31,6 @@ public extension LocalCharacterLoader {
 }
 
 
-
-
-
-
-
-
 public extension CharacterImageDataLoader {
     typealias Publisher = AnyPublisher<Data, Error>
 
@@ -65,12 +59,6 @@ private extension CharacterImageDataCache {
         try? save(data, for: url)
     }
 }
-
-
-
-
-
-
 
 
 
