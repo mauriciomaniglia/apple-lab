@@ -3,7 +3,7 @@ import CoreData
 
 struct CharactersViewControllerRepresentable: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UINavigationController {
-        let vc = CharactersUIComposer().viewController()
+        let vc = StartPoint().viewController()
         return UINavigationController(rootViewController: vc)
     }
 
