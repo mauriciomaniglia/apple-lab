@@ -19,7 +19,7 @@ final class CharacterImageLoaderAdapter<View: CharacterImageView, Image>: Charac
 
         let model = self.model
         cancellable = imageLoader(model.image)            
-            .receive(on: DispatchQueue.main)
+            .dispatchOnMainQueue()
             .sink(
                 receiveCompletion: { [weak self] completion in
                     switch completion {

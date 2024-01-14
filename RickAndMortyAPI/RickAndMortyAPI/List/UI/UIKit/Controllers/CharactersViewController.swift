@@ -32,7 +32,6 @@ public final class CharactersViewController: UITableViewController, UITableViewD
 
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
         tableView.sizeTableHeaderToFit()
     }
 
@@ -41,7 +40,7 @@ public final class CharactersViewController: UITableViewController, UITableViewD
         tableModel = cellControllers
      }
 
-    private func refresh() {         
+    @objc private func refresh() {         
         didRequestCharactersRefresh?()
      }
 
@@ -62,6 +61,8 @@ public final class CharactersViewController: UITableViewController, UITableViewD
     }
 
     public override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cellController(forRowAt: indexPath).willDisplay()
+
         if indexPath.row == tableModel.count-1 {
             didRequestLoadMoreCharacters?(self)
         }
@@ -93,6 +94,10 @@ public final class CharactersViewController: UITableViewController, UITableViewD
     }
 
     private func configureTableView() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        self.refreshControl = refreshControl
+
         tableView.prefetchDataSource = self
         tableView.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.reuseIdentifier)
         tableView.separatorStyle = .none

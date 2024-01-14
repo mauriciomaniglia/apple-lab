@@ -4,6 +4,7 @@ import Combine
 final class CharactersPresentationAdapter {    
     private let characterLoader: () -> AnyPublisher<[Character], Error>
     private var cancellable: Cancellable?
+    private var isLoading = false
 
     var presenter: CharactersPresenter?
 
@@ -12,10 +13,13 @@ final class CharactersPresentationAdapter {
     }
 
     func load() {
+        guard !isLoading else { return }
+
         presenter?.didStartLoadingCharacters()
+        isLoading = true
 
         cancellable = characterLoader()
-            .receive(on: DispatchQueue.main)
+            .dispatchOnMainQueue()
             .sink(
                 receiveCompletion: { [weak self] completion in
                     switch completion {
@@ -25,8 +29,9 @@ final class CharactersPresentationAdapter {
                         self?.presenter?.didFinishLoadingCharacters(with: error)
                     }
 
+                    self?.isLoading = false
                 }, receiveValue: { [weak self] characters in
-                    self?.presenter?.didFinishLoadingCharacters(with: characters)
+                    self?.presenter?.didFinishLoadingCharacters(with: characters)                    
                 })
     }
 }

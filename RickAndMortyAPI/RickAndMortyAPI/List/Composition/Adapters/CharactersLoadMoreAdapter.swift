@@ -5,10 +5,11 @@ public class CharactersLoadMoreAdapter {
     private let characterLoader: (Int) -> AnyPublisher<[Character], Error>
     private var cancellable: Cancellable?
     private var charactersCount = 0
+    private var isLoading = false
 
-    var presenter: CharactersPresenter?
-    var viewController: CharactersViewController?
-    var loadMoreCell: LoadMoreCell?
+    weak var presenter: CharactersPresenter?
+    weak var viewController: CharactersViewController?
+    weak var loadMoreCell: LoadMoreCell?
 
     init(characterLoader: @escaping (Int) -> AnyPublisher<[Character], Error>) {
         self.characterLoader = characterLoader
@@ -29,8 +30,12 @@ public class CharactersLoadMoreAdapter {
     }
 
     private func loadMore(page: Int) {
+        guard !isLoading else { return }
+
+        isLoading = true
+
         cancellable = characterLoader(page)
-            .receive(on: DispatchQueue.main)
+            .dispatchOnMainQueue()
             .map(checkLoadMore(cachedItems:))
             .sink(
                 receiveCompletion: { [weak self] completion in
@@ -38,9 +43,11 @@ public class CharactersLoadMoreAdapter {
                     case .finished: break
 
                     case .failure:
-                        self?.loadMoreCell?.isLoading = false
                         self?.loadMoreCell?.message = "Couldn't connect to server"
                     }
+
+                    self?.loadMoreCell?.isLoading = false
+                    self?.isLoading = false
                 }, receiveValue: { [weak self] characters in
                     self?.charactersCount = characters.count
                     self?.presenter?.didFinishLoadingCharacters(with: characters)

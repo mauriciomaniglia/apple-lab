@@ -28,6 +28,10 @@ public final class CharacterCellController: CharacterImageView {
         delegate.didCancelImageRequest()
     }
 
+    func willDisplay() {
+        delegate.didRequestImage()
+    }
+
     public func display(_ viewModel: CharacterViewModel<UIImage>) {
         cell?.nameLabel.text = viewModel.name
         cell?.speciesLabel.text = viewModel.species
