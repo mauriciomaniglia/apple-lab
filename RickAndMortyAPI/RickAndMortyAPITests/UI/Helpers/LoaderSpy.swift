@@ -25,12 +25,14 @@ class LoaderSpy {
 
 
 
+    var currentPage = 0
     private var loadMoreRequests = [PassthroughSubject<[Character], Error>]()
     var loadMoreCallCount: Int {
         return loadMoreRequests.count
     }
 
     func loadMorePublisher(page: Int) -> AnyPublisher<[Character], Error> {
+        currentPage = page
         let publisher = PassthroughSubject<[Character], Error>()
         loadMoreRequests.append(publisher)
         return publisher.eraseToAnyPublisher()

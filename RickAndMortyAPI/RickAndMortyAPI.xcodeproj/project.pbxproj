@@ -31,6 +31,8 @@
 		F9387E7E2B3F5F5300106DB6 /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9387E7D2B3F5F5300106DB6 /* HTTPURLResponse+StatusCode.swift */; };
 		F95685592B4B60300085C7B5 /* UIView+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95685582B4B60300085C7B5 /* UIView+Container.swift */; };
 		F956855B2B4C66B60085C7B5 /* LoadMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F956855A2B4C66B60085C7B5 /* LoadMoreCell.swift */; };
+		F9708CA62B541C4E004C4AB4 /* CharactersViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9708CA52B541C4E004C4AB4 /* CharactersViewControllerTests.swift */; };
+		F9708CA92B543EA9004C4AB4 /* CharactersLoadMoreAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9708CA82B543EA9004C4AB4 /* CharactersLoadMoreAdapterTests.swift */; };
 		F98D03822B3862FE00DAD0EC /* LocalCharacterLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98D03812B3862FE00DAD0EC /* LocalCharacterLoader.swift */; };
 		F98D03842B38634200DAD0EC /* CharacterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98D03832B38634200DAD0EC /* CharacterStore.swift */; };
 		F98D03862B38637000DAD0EC /* LocalCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98D03852B38637000DAD0EC /* LocalCharacter.swift */; };
@@ -130,6 +132,8 @@
 		F9387E7D2B3F5F5300106DB6 /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
 		F95685582B4B60300085C7B5 /* UIView+Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Container.swift"; sourceTree = "<group>"; };
 		F956855A2B4C66B60085C7B5 /* LoadMoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreCell.swift; sourceTree = "<group>"; };
+		F9708CA52B541C4E004C4AB4 /* CharactersViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewControllerTests.swift; sourceTree = "<group>"; };
+		F9708CA82B543EA9004C4AB4 /* CharactersLoadMoreAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersLoadMoreAdapterTests.swift; sourceTree = "<group>"; };
 		F98D03812B3862FE00DAD0EC /* LocalCharacterLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCharacterLoader.swift; sourceTree = "<group>"; };
 		F98D03832B38634200DAD0EC /* CharacterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStore.swift; sourceTree = "<group>"; };
 		F98D03852B38637000DAD0EC /* LocalCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCharacter.swift; sourceTree = "<group>"; };
@@ -289,6 +293,7 @@
 		F9387E652B3F3A0600106DB6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F9708CA42B541C3D004C4AB4 /* Controllers */,
 				F9387E682B3F3A5D00106DB6 /* Helpers */,
 				F9387E662B3F3A1200106DB6 /* CharactersUIIntegrationTests.swift */,
 			);
@@ -327,6 +332,22 @@
 				F9387E7D2B3F5F5300106DB6 /* HTTPURLResponse+StatusCode.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F9708CA42B541C3D004C4AB4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F9708CA52B541C4E004C4AB4 /* CharactersViewControllerTests.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F9708CA72B543E7B004C4AB4 /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				F9708CA82B543EA9004C4AB4 /* CharactersLoadMoreAdapterTests.swift */,
+			);
+			path = Composition;
 			sourceTree = "<group>";
 		};
 		F98D03802B3862BF00DAD0EC /* Cache */ = {
@@ -465,6 +486,7 @@
 		F9D9A4A52B34A69900CEC90B /* RickAndMortyAPITests */ = {
 			isa = PBXGroup;
 			children = (
+				F9708CA72B543E7B004C4AB4 /* Composition */,
 				F9387E652B3F3A0600106DB6 /* UI */,
 				F9387E602B3F333B00106DB6 /* Presentation */,
 				F98D03A52B3A0E3200DAD0EC /* Infrastructure */,
@@ -725,12 +747,14 @@
 				F9F83C772B52E4F600973580 /* CharactersViewController+TestHelpers.swift in Sources */,
 				F9E894342B4839A100D25AA9 /* CharacterItemsMapperTests.swift in Sources */,
 				F98D03932B388E6400DAD0EC /* LoadCharacterFromCacheUseCaseTests.swift in Sources */,
+				F9708CA92B543EA9004C4AB4 /* CharactersLoadMoreAdapterTests.swift in Sources */,
 				F9B7A42A2B4F549E00D8C202 /* UIControl+TestHelpers.swift in Sources */,
 				F9D9A4D72B34A99800CEC90B /* SharedTestHelpers.swift in Sources */,
 				F98D03AA2B3A1C7700DAD0EC /* XCTestCase+CharacterStoreSpecs.swift in Sources */,
 				F9D9A4DE2B34A9AF00CEC90B /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				F98D03AC2B3A1E6A00DAD0EC /* XCTestCase+FailableRetrieveCharacterStoreSpecs.swift in Sources */,
 				F98D03952B38902D00DAD0EC /* ValidateCharacterCacheUseCaseTests.swift in Sources */,
+				F9708CA62B541C4E004C4AB4 /* CharactersViewControllerTests.swift in Sources */,
 				F9B7A41F2B4EC12100D8C202 /* CoreDataCharacterImageDataStoreTests.swift in Sources */,
 				F9387E672B3F3A1200106DB6 /* CharactersUIIntegrationTests.swift in Sources */,
 				F98D03B02B3A1F1B00DAD0EC /* XCTestCase+FailableDeleteCharacterStoreSpecs.swift in Sources */,

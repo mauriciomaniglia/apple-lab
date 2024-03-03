@@ -40,10 +40,6 @@ public final class CharactersViewController: UITableViewController, UITableViewD
         tableModel = cellControllers
      }
 
-    @objc private func refresh() {         
-        didRequestCharactersRefresh?()
-     }
-
     public func display(_ viewModel: CharactersLoadingViewModel) {
         refreshControl?.update(isRefreshing: viewModel.isLoading)
      }
@@ -81,6 +77,10 @@ public final class CharactersViewController: UITableViewController, UITableViewD
     public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach(cancelCellControllerLoad)
     }
+
+    @objc private func refresh() {
+        didRequestCharactersRefresh?()
+     }
 
     private func cellController(forRowAt indexPath: IndexPath) -> CharacterCellController {
         let controller = tableModel[indexPath.row]
