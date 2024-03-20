@@ -11,6 +11,7 @@
 		F97374AF2BAA6C6100A7755A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97374AE2BAA6C6100A7755A /* ContentView.swift */; };
 		F97374B12BAA6C6300A7755A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F97374B02BAA6C6300A7755A /* Assets.xcassets */; };
 		F97374B42BAA6C6300A7755A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F97374B32BAA6C6300A7755A /* Preview Assets.xcassets */; };
+		F97374C72BAA6DC600A7755A /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97374C62BAA6DC600A7755A /* MainTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		F97374AE2BAA6C6100A7755A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F97374B02BAA6C6300A7755A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F97374B32BAA6C6300A7755A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F97374C62BAA6DC600A7755A /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +53,11 @@
 		F97374AB2BAA6C6100A7755A /* TinderClone */ = {
 			isa = PBXGroup;
 			children = (
-				F97374AC2BAA6C6100A7755A /* TinderCloneApp.swift */,
+				F97374BE2BAA6CD500A7755A /* App */,
+				F97374BD2BAA6CD200A7755A /* Core */,
+				F97374BC2BAA6CCF00A7755A /* Extensions */,
+				F97374BB2BAA6CCB00A7755A /* Shared */,
+				F97374BA2BAA6CC800A7755A /* Utils */,
 				F97374AE2BAA6C6100A7755A /* ContentView.swift */,
 				F97374B02BAA6C6300A7755A /* Assets.xcassets */,
 				F97374B22BAA6C6300A7755A /* Preview Content */,
@@ -65,6 +71,83 @@
 				F97374B32BAA6C6300A7755A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F97374BA2BAA6CC800A7755A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F97374BB2BAA6CCB00A7755A /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		F97374BC2BAA6CCF00A7755A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F97374BD2BAA6CD200A7755A /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				F97374C02BAA6D4F00A7755A /* Cards */,
+				F97374C32BAA6D7300A7755A /* Messaging */,
+				F97374C12BAA6D6000A7755A /* Profile */,
+				F97374C22BAA6D6600A7755A /* Search */,
+				F97374BF2BAA6D4800A7755A /* Tabbar */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		F97374BE2BAA6CD500A7755A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F97374AC2BAA6C6100A7755A /* TinderCloneApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F97374BF2BAA6D4800A7755A /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				F97374C62BAA6DC600A7755A /* MainTabView.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		F97374C02BAA6D4F00A7755A /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		F97374C12BAA6D6000A7755A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		F97374C22BAA6D6600A7755A /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		F97374C32BAA6D7300A7755A /* Messaging */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Messaging;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F97374C72BAA6DC600A7755A /* MainTabView.swift in Sources */,
 				F97374AF2BAA6C6100A7755A /* ContentView.swift in Sources */,
 				F97374AD2BAA6C6100A7755A /* TinderCloneApp.swift in Sources */,
 			);
