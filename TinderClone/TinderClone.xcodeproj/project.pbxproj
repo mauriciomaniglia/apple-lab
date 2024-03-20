@@ -12,6 +12,8 @@
 		F97374B12BAA6C6300A7755A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F97374B02BAA6C6300A7755A /* Assets.xcassets */; };
 		F97374B42BAA6C6300A7755A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F97374B32BAA6C6300A7755A /* Preview Assets.xcassets */; };
 		F97374C72BAA6DC600A7755A /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97374C62BAA6DC600A7755A /* MainTabView.swift */; };
+		F97374CA2BAA71C000A7755A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97374C92BAA71C000A7755A /* CardView.swift */; };
+		F97374CC2BAA741700A7755A /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97374CB2BAA741700A7755A /* UserInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		F97374B02BAA6C6300A7755A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F97374B32BAA6C6300A7755A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F97374C62BAA6DC600A7755A /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		F97374C92BAA71C000A7755A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		F97374CB2BAA741700A7755A /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,7 @@
 		F97374C02BAA6D4F00A7755A /* Cards */ = {
 			isa = PBXGroup;
 			children = (
+				F97374C82BAA71B300A7755A /* Views */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -148,6 +153,15 @@
 			children = (
 			);
 			path = Messaging;
+			sourceTree = "<group>";
+		};
+		F97374C82BAA71B300A7755A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F97374C92BAA71C000A7755A /* CardView.swift */,
+				F97374CB2BAA741700A7755A /* UserInfoView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,7 +236,9 @@
 			files = (
 				F97374C72BAA6DC600A7755A /* MainTabView.swift in Sources */,
 				F97374AF2BAA6C6100A7755A /* ContentView.swift in Sources */,
+				F97374CA2BAA71C000A7755A /* CardView.swift in Sources */,
 				F97374AD2BAA6C6100A7755A /* TinderCloneApp.swift in Sources */,
+				F97374CC2BAA741700A7755A /* UserInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
