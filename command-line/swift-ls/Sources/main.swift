@@ -19,19 +19,40 @@ func listDirectory(atPath path: String, showHidden: Bool, detailed: Bool) {
             if detailed {
                 let fullPath = (path as NSString).appendingPathComponent(item)
                 if let attributes = try? fileManager.attributesOfItem(atPath: fullPath) {
+                    let fileTypeIndicator = fileTypeIndicator(from: attributes)
                     let size = attributes[.size] as? Int ?? 0
                     let modificationDate = attributes[.modificationDate] as? Date ?? Date()
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateStyle = .medium
                     dateFormatter.timeStyle = .short
-                    print("\(size) bytes \(dateFormatter.string(from: modificationDate)) \(item)")
+                    print("\(size) bytes \(dateFormatter.string(from: modificationDate)) \(item)\(fileTypeIndicator)")
                 }
             } else {
-                print(item)
+                print("\(item)")
             }
         }
     } catch {
         print("Error: \(error.localizedDescription)")
+    }
+}
+
+func fileTypeIndicator(from attributes: [FileAttributeKey: Any]) -> String {
+    let fileType = attributes[.type] as? FileAttributeType
+
+    switch fileType {
+    case .typeDirectory:
+        return "/"
+    case .typeSymbolicLink:
+        return "@"
+    case .typeRegular:
+        // Check if the file is executable
+        if let posixPermission = attributes[.posixPermissions] as? Int,
+           posixPermission & 0o111 != 0 { // Any executable bit set
+            return "*"
+        }
+        return ""
+    default:
+        return ""
     }
 }
 
