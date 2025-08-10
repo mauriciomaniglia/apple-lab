@@ -1,5 +1,20 @@
-import XCPlayground
+import PlaygroundSupport
 import Foundation
+
+struct Episode {
+    let id: String
+    let title: String
+}
+
+extension Episode {
+    init?(dictionary: JSONDictionary) {
+        guard let id = dictionary["id"] as? String,
+              let title = dictionary["title"] as? String else { return nil }
+
+        self.id = id
+        self.title = title
+    }
+}
 
 struct Resource<A> {
     let url: URL
@@ -8,8 +23,12 @@ struct Resource<A> {
 
 let url = URL(string: "https://raw.githubusercontent.com/mauriciomaniglia/apple-lab/refs/heads/main/network-library/episodes.json")!
 
-let episodesResource = Resource<Data>(url: url, parse: { data in
-    return data
+typealias JSONDictionary = [String: AnyObject]
+
+let episodesResource = Resource<[Episode]>(url: url, parse: { data in
+    let json = try? JSONSerialization.jsonObject(with: data, options: [])
+    guard let dictionaries = json as? [JSONDictionary] else { return nil }
+    return dictionaries.flatMap(Episode.init)
 })
 
 final class Webservice {
@@ -25,4 +44,4 @@ Webservice().load(resource: episodesResource) { data in
     print(data)
 }
 
-XCPlaygroundPage.currentPage.needsIndefiniteExecution = true
+PlaygroundPage.current.needsIndefiniteExecution = true
