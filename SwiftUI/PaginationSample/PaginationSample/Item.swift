@@ -27,7 +27,7 @@ struct Item: Identifiable, Equatable {
     ]
 
     static var mockedItems: [Item] {
-        let items = (0..<150).map { index in
+        let items = (0..<50).map { index in
             Item(
                 createdDate: Date(),
                 title: titles[index % titles.count],

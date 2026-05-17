@@ -19,11 +19,11 @@ class DataSetViewModel {
         self.dataRepository = dataRepository
     }
 
-    private func getTotalItemsCount() -> Int {
+    func getTotalItemsCount() -> Int {
         return dataRepository.getTotalItemsCount()
     }
 
-    private func shouldFetchNextBatch(lastVisibleItem: Item) -> Bool {
+    func shouldFetchNextBatch(lastVisibleItem: Item) -> Bool {
         if lastVisibleItem == items.last && hasMoreItemsToFetch {
             return true
         }
