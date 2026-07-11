@@ -13,6 +13,8 @@
 		F9D183242FFDCA7200C46959 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D183232FFDCA7200C46959 /* MainTabView.swift */; };
 		F9D183262FFFC67A00C46959 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D183252FFFC67A00C46959 /* ProfileView.swift */; };
 		F9D183292FFFDFD700C46959 /* UserStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D183282FFFDFD700C46959 /* UserStatView.swift */; };
+		F9D1832B3001DB6B00C46959 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D1832A3001DB6B00C46959 /* FeedView.swift */; };
+		F9D1832D3001DB8900C46959 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D1832C3001DB8900C46959 /* FeedCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		F9D183232FFDCA7200C46959 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		F9D183252FFFC67A00C46959 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		F9D183282FFFDFD700C46959 /* UserStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatView.swift; sourceTree = "<group>"; };
+		F9D1832A3001DB6B00C46959 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		F9D1832C3001DB8900C46959 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 		F9D183132FFDC9DD00C46959 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				F9D1832A3001DB6B00C46959 /* FeedView.swift */,
+				F9D1832C3001DB8900C46959 /* FeedCell.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -241,10 +247,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9D1832D3001DB8900C46959 /* FeedCell.swift in Sources */,
 				F9D183262FFFC67A00C46959 /* ProfileView.swift in Sources */,
 				F9D183212FFDC9DD00C46959 /* InstagramCloneApp.swift in Sources */,
 				F9D183222FFDC9DD00C46959 /* ContentView.swift in Sources */,
 				F9D183292FFFDFD700C46959 /* UserStatView.swift in Sources */,
+				F9D1832B3001DB6B00C46959 /* FeedView.swift in Sources */,
 				F9D183242FFDCA7200C46959 /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
