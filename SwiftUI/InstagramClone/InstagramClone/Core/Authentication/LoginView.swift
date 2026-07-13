@@ -50,16 +50,17 @@ struct LoginView: View {
 
             HStack {
                 Rectangle()
-                    .frame(width: (UIScreen.main.bounds.width / 2) - 40, height: 0.5)
+                    .frame(height: 0.5)
 
                 Text("OR")
                     .font(.footnote)
                     .fontWeight(.semibold)
 
                 Rectangle()
-                    .frame(width: (UIScreen.main.bounds.width / 2) - 40, height: 0.5)
+                    .frame(height: 0.5)
             }
             .foregroundStyle(.gray)
+            .padding(.horizontal, 40)
 
             HStack {
                 Image("facebook_logo")

@@ -69,14 +69,11 @@ struct FeedCell: View {
 
             // caption label
 
-            HStack {
-                Text("Alyx ").fontWeight(.semibold) +
-                Text("some caption text example, again some cation text to be clear")
-            }
-            .font(.footnote)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.top, 1)
-            .padding(.leading, 10)
+            Text("\(Text("Alyx ").fontWeight(.semibold))some caption text example, again some cation text to be clear")
+                .font(.footnote)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.top, 1)
+                .padding(.leading, 10)
 
             Text("8h ago")
                 .font(.footnote)
