@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		F92DB6BB300286F00091D005 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DB6BA300286F00091D005 /* SearchView.swift */; };
 		F92DB6BD30028C340091D005 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DB6BC30028C340091D005 /* LoginView.swift */; };
+		F92DB710300446860091D005 /* AddEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DB70F300446860091D005 /* AddEmailView.swift */; };
+		F92DB71230046E7F0091D005 /* IGTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DB71130046E7F0091D005 /* IGTextFieldModifier.swift */; };
+		F92DB71430046F920091D005 /* CreateUsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DB71330046F920091D005 /* CreateUsernameView.swift */; };
+		F92DB716300472150091D005 /* CreatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DB715300472150091D005 /* CreatePasswordView.swift */; };
+		F92DB7183004739C0091D005 /* CompleteSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DB7173004739C0091D005 /* CompleteSignUpView.swift */; };
 		F9D183202FFDC9DD00C46959 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9D1831D2FFDC9DD00C46959 /* Assets.xcassets */; };
 		F9D183212FFDC9DD00C46959 /* InstagramCloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D183102FFDC9DD00C46959 /* InstagramCloneApp.swift */; };
 		F9D183222FFDC9DD00C46959 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D1831E2FFDC9DD00C46959 /* ContentView.swift */; };
@@ -22,6 +27,11 @@
 /* Begin PBXFileReference section */
 		F92DB6BA300286F00091D005 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		F92DB6BC30028C340091D005 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F92DB70F300446860091D005 /* AddEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmailView.swift; sourceTree = "<group>"; };
+		F92DB71130046E7F0091D005 /* IGTextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGTextFieldModifier.swift; sourceTree = "<group>"; };
+		F92DB71330046F920091D005 /* CreateUsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameView.swift; sourceTree = "<group>"; };
+		F92DB715300472150091D005 /* CreatePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordView.swift; sourceTree = "<group>"; };
+		F92DB7173004739C0091D005 /* CompleteSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSignUpView.swift; sourceTree = "<group>"; };
 		F9D182E82FFDC6E800C46959 /* InstagramClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9D183102FFDC9DD00C46959 /* InstagramCloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramCloneApp.swift; sourceTree = "<group>"; };
 		F9D1831D2FFDC9DD00C46959 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,6 +82,10 @@
 			isa = PBXGroup;
 			children = (
 				F92DB6BC30028C340091D005 /* LoginView.swift */,
+				F92DB70F300446860091D005 /* AddEmailView.swift */,
+				F92DB71330046F920091D005 /* CreateUsernameView.swift */,
+				F92DB715300472150091D005 /* CreatePasswordView.swift */,
+				F92DB7173004739C0091D005 /* CompleteSignUpView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -177,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				F9D183282FFFDFD700C46959 /* UserStatView.swift */,
+				F92DB71130046E7F0091D005 /* IGTextFieldModifier.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -258,10 +273,15 @@
 				F9D183212FFDC9DD00C46959 /* InstagramCloneApp.swift in Sources */,
 				F92DB6BD30028C340091D005 /* LoginView.swift in Sources */,
 				F9D183222FFDC9DD00C46959 /* ContentView.swift in Sources */,
+				F92DB710300446860091D005 /* AddEmailView.swift in Sources */,
+				F92DB71430046F920091D005 /* CreateUsernameView.swift in Sources */,
+				F92DB7183004739C0091D005 /* CompleteSignUpView.swift in Sources */,
 				F92DB6BB300286F00091D005 /* SearchView.swift in Sources */,
+				F92DB71230046E7F0091D005 /* IGTextFieldModifier.swift in Sources */,
 				F9D183292FFFDFD700C46959 /* UserStatView.swift in Sources */,
 				F9D1832B3001DB6B00C46959 /* FeedView.swift in Sources */,
 				F9D183242FFDCA7200C46959 /* MainTabView.swift in Sources */,
+				F92DB716300472150091D005 /* CreatePasswordView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
