@@ -12,6 +12,11 @@ struct MockGhibliService: GhibliService {
         return data.films
     }
 
+    func fetchPerson(from URLString: String) async throws -> Person {
+        let data = try loadSampleData()
+        return data.people.first!
+    }
+
     private func loadSampleData() throws -> SampleData {
         guard let url = Bundle.main.url(forResource: "SampleData", withExtension: "json") else {
             throw APIError.invalidURL

@@ -3,7 +3,16 @@ import Foundation
 struct DefaultGhibliService: GhibliService {
 
     func fetchFilms() async throws -> [Film] {
-        guard let url = URL(string: "https://ghibliapi.vercel.app/films") else {
+        let url = "https://ghibliapi.vercel.app/films"
+        return try await fetch(from: url, type: [Film].self)
+    }
+
+    func fetchPerson(from URLString: String) async throws -> Person {
+        return try await fetch(from: URLString, type: Person.self)
+    }
+
+    private func fetch<T: Decodable>(from URLString: String, type: T.Type) async throws -> T {
+        guard let url = URL(string: URLString) else {
             throw APIError.invalidURL
         }
 
@@ -14,7 +23,7 @@ struct DefaultGhibliService: GhibliService {
                 throw APIError.invalidResponse
             }
 
-            return try JSONDecoder().decode([Film].self, from: data)
+            return try JSONDecoder().decode(type, from: data)
         } catch let error as DecodingError {
             throw APIError.decoding(error)
         } catch let error as URLError {
