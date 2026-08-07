@@ -1,7 +1,7 @@
 import Foundation
 import Observation
 
-
+@Observable
 class FilmDetailViewModel {
 
     enum State: Equatable {
