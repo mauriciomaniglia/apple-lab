@@ -15,7 +15,7 @@ struct FilmImageView: View {
             case .success(let image):
                 image
                     .resizable()
-                    .scaledToFit()
+                    .scaledToFill()
             case .failure:
                 Text("Could not get image")
             @unknown default:
