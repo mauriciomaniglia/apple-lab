@@ -7,21 +7,6 @@ struct FilmDetailScreen: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            AsyncImage(url: URL(string: film.bannerImage)) { phase in
-                switch phase {
-                case .empty:
-                    Color.gray
-                case .success(let image):
-                    image
-                        .resizable()
-                        .scaledToFit()
-                case .failure:
-                    Text("Could not get image")
-                @unknown default:
-                    fatalError()
-                }
-            }
-            
             Text(film.title)
             Divider()
             Text("Characters")
