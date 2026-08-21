@@ -26,10 +26,14 @@ struct FilmImageView: View {
 }
 
 #Preview("banner image") {
-    FilmImageView(urlPath: "https://image.tmdb.org/t/p/w533_and_h300_bestv2/3cyjYtLWCBE1uvWINHFsFnE8LUK.jpg")
+    let url = URL.convertAssertImage(named: "bannerImage")
+
+    FilmImageView(urlPath: url!.absoluteString)
 }
 
 #Preview("poster image") {
-    FilmImageView(urlPath: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/npOnzAbLh6VOIu3naU5QaEcTepo.jpg")
+    let url = URL.convertAssertImage(named: "posterImage")
+
+    FilmImageView(urlPath: url!.absoluteString)
         .frame(height: 150)
 }
