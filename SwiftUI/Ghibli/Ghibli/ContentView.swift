@@ -2,13 +2,20 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            Tab("Movies", systemImage: "movieclapper") {
+
+            }
+            Tab("Favorites", systemImage: "heart") {
+
+            }
+            Tab("Settings", systemImage: "gear") {
+
+            }
+            Tab(role: .search) {
+                
+            }
         }
-        .padding()
     }
 }
 
