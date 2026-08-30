@@ -1,10 +1,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var filmsViewModel = FilmViewModel()
+
     var body: some View {
         TabView {
             Tab("Movies", systemImage: "movieclapper") {
-
+                FilmsScreen(viewModel: filmsViewModel)
             }
             Tab("Favorites", systemImage: "heart") {
 
@@ -13,7 +15,7 @@ struct ContentView: View {
 
             }
             Tab(role: .search) {
-                
+
             }
         }
     }
